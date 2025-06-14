@@ -1,0 +1,183 @@
+USE [master]
+GO
+/****** Object:  Database [StudentManagement]    Script Date: 14-06-2025 15:26:32 ******/
+CREATE DATABASE [StudentManagement]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'StudentManagement', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\StudentManagement.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'StudentManagement_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\StudentManagement_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT
+GO
+ALTER DATABASE [StudentManagement] SET COMPATIBILITY_LEVEL = 150
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [StudentManagement].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [StudentManagement] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [StudentManagement] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [StudentManagement] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [StudentManagement] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [StudentManagement] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [StudentManagement] SET AUTO_CLOSE ON 
+GO
+ALTER DATABASE [StudentManagement] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [StudentManagement] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [StudentManagement] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [StudentManagement] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [StudentManagement] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [StudentManagement] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [StudentManagement] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [StudentManagement] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [StudentManagement] SET  ENABLE_BROKER 
+GO
+ALTER DATABASE [StudentManagement] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [StudentManagement] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [StudentManagement] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [StudentManagement] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [StudentManagement] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [StudentManagement] SET READ_COMMITTED_SNAPSHOT ON 
+GO
+ALTER DATABASE [StudentManagement] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [StudentManagement] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [StudentManagement] SET  MULTI_USER 
+GO
+ALTER DATABASE [StudentManagement] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [StudentManagement] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [StudentManagement] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [StudentManagement] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [StudentManagement] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [StudentManagement] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+ALTER DATABASE [StudentManagement] SET QUERY_STORE = OFF
+GO
+USE [StudentManagement]
+GO
+/****** Object:  Table [dbo].[__EFMigrationsHistory]    Script Date: 14-06-2025 15:26:32 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[__EFMigrationsHistory](
+	[MigrationId] [nvarchar](150) NOT NULL,
+	[ProductVersion] [nvarchar](32) NOT NULL,
+ CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY CLUSTERED 
+(
+	[MigrationId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Courses]    Script Date: 14-06-2025 15:26:32 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Courses](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Title] [nvarchar](max) NOT NULL,
+	[Description] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_Courses] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[CourseStudent]    Script Date: 14-06-2025 15:26:32 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[CourseStudent](
+	[CoursesId] [int] NOT NULL,
+	[StudentsId] [int] NOT NULL,
+ CONSTRAINT [PK_CourseStudent] PRIMARY KEY CLUSTERED 
+(
+	[CoursesId] ASC,
+	[StudentsId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Students]    Script Date: 14-06-2025 15:26:32 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Students](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](max) NOT NULL,
+	[Email] [nvarchar](max) NOT NULL,
+	[PhoneNumber] [nvarchar](max) NOT NULL,
+	[Courses] [nvarchar](max) NULL,
+ CONSTRAINT [PK_Students] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20250614073723_InitialCreate', N'9.0.6')
+GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20250614082518_SchemaChange', N'9.0.6')
+GO
+SET IDENTITY_INSERT [dbo].[Courses] ON 
+GO
+INSERT [dbo].[Courses] ([Id], [Title], [Description]) VALUES (2, N'Mathematics', N'11th Grade Mathematics')
+GO
+SET IDENTITY_INSERT [dbo].[Courses] OFF
+GO
+INSERT [dbo].[CourseStudent] ([CoursesId], [StudentsId]) VALUES (2, 1)
+GO
+SET IDENTITY_INSERT [dbo].[Students] ON 
+GO
+INSERT [dbo].[Students] ([Id], [Name], [Email], [PhoneNumber], [Courses]) VALUES (1, N'Manan Sheth', N'manansheth45@gmail.com', N'7043040801', N'Mathematics,English,Science')
+GO
+SET IDENTITY_INSERT [dbo].[Students] OFF
+GO
+/****** Object:  Index [IX_CourseStudent_StudentsId]    Script Date: 14-06-2025 15:26:32 ******/
+CREATE NONCLUSTERED INDEX [IX_CourseStudent_StudentsId] ON [dbo].[CourseStudent]
+(
+	[StudentsId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[CourseStudent]  WITH CHECK ADD  CONSTRAINT [FK_CourseStudent_Courses_CoursesId] FOREIGN KEY([CoursesId])
+REFERENCES [dbo].[Courses] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[CourseStudent] CHECK CONSTRAINT [FK_CourseStudent_Courses_CoursesId]
+GO
+ALTER TABLE [dbo].[CourseStudent]  WITH CHECK ADD  CONSTRAINT [FK_CourseStudent_Students_StudentsId] FOREIGN KEY([StudentsId])
+REFERENCES [dbo].[Students] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[CourseStudent] CHECK CONSTRAINT [FK_CourseStudent_Students_StudentsId]
+GO
+USE [master]
+GO
+ALTER DATABASE [StudentManagement] SET  READ_WRITE 
+GO

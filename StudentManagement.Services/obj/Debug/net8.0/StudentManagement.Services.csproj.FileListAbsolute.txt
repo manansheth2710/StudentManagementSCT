@@ -1,0 +1,11 @@
+C:\Users\MananSheth_0yddi2r\source\repos\Training\StudentManagement.Services\bin\Debug\net8.0\StudentManagement.Services.deps.json
+C:\Users\MananSheth_0yddi2r\source\repos\Training\StudentManagement.Services\bin\Debug\net8.0\StudentManagement.Services.dll
+C:\Users\MananSheth_0yddi2r\source\repos\Training\StudentManagement.Services\bin\Debug\net8.0\StudentManagement.Services.pdb
+C:\Users\MananSheth_0yddi2r\source\repos\Training\StudentManagement.Services\obj\Debug\net8.0\StudentManagement.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MananSheth_0yddi2r\source\repos\Training\StudentManagement.Services\obj\Debug\net8.0\StudentManagement.Services.AssemblyInfoInputs.cache
+C:\Users\MananSheth_0yddi2r\source\repos\Training\StudentManagement.Services\obj\Debug\net8.0\StudentManagement.Services.AssemblyInfo.cs
+C:\Users\MananSheth_0yddi2r\source\repos\Training\StudentManagement.Services\obj\Debug\net8.0\StudentManagement.Services.csproj.CoreCompileInputs.cache
+C:\Users\MananSheth_0yddi2r\source\repos\Training\StudentManagement.Services\obj\Debug\net8.0\StudentManagement.Services.dll
+C:\Users\MananSheth_0yddi2r\source\repos\Training\StudentManagement.Services\obj\Debug\net8.0\refint\StudentManagement.Services.dll
+C:\Users\MananSheth_0yddi2r\source\repos\Training\StudentManagement.Services\obj\Debug\net8.0\StudentManagement.Services.pdb
+C:\Users\MananSheth_0yddi2r\source\repos\Training\StudentManagement.Services\obj\Debug\net8.0\ref\StudentManagement.Services.dll
